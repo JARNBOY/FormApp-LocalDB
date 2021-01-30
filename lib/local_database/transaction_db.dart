@@ -8,7 +8,7 @@ class TransactionInFoDB {
 
   //ถ้ายังไม่ถูกสร้าง => สร้าง
   //ถูกสร้างไว้แล้ว => เปิด
-  TransactionInFoDB(this.dbName, {String dbName});
+  TransactionInFoDB(this.dbName);
 
 //dbName = transanction.db
   Future<String> openDatabase() async {
