@@ -1,4 +1,4 @@
-import 'package:basic_command_app/models/TransactionInfo.dart';
+import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:basic_command_app/provider/transaction_provider.dart';
 import 'package:basic_command_app/screen/form_screen.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +76,7 @@ class _HomeBodyContainerState extends State<HomeBodyContainer> {
             return ListView.builder(
               itemCount: count,
               itemBuilder: (context, int index) {
-                TransactionInFo transaction = provider.transaction[index];
+                TransactionInFos transaction = provider.transaction[index];
 
                 return Card(
                   margin:

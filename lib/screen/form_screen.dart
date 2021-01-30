@@ -1,4 +1,4 @@
-import 'package:basic_command_app/models/TransactionInfo.dart';
+import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:basic_command_app/provider/transaction_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -90,7 +90,7 @@ class FormScreen extends StatelessWidget {
                     //print(name + " " + surname);
 
                     //เตรียมข้อมูล
-                    TransactionInFo register = TransactionInFo(
+                    TransactionInFos register = TransactionInFos(
                         name: name,
                         surname: surname,
                         phone: int.parse(phone),

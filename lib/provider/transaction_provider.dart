@@ -1,15 +1,15 @@
-import 'package:basic_command_app/models/TransactionInfo.dart';
+import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:flutter/foundation.dart';
 
 class TransactionProvider with ChangeNotifier {
-  List<TransactionInFo> transaction = [];
+  List<TransactionInFos> transaction = [];
 
   //ดึวงข้อมูล
-  List<TransactionInFo> getTransaction() {
+  List<TransactionInFos> getTransaction() {
     return transaction;
   }
 
-  addTransaction(TransactionInFo info) {
+  addTransaction(TransactionInFos info) {
     transaction.insert(0, info);
 
     //แจ้งเตือน Consumer
