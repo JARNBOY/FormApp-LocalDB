@@ -10,9 +10,9 @@ class TransactionProvider with ChangeNotifier {
     return transaction;
   }
 
-  addTransaction(TransactionInFos info) {
+  addTransaction(TransactionInFos info) async {
     //สร้างหรือเปิด db
-    var db = TransactionInFoDB("transanction.db").openDatabase();
+    var db = await TransactionInFoDB("transanction.db").openDatabase();
     print(db);
 
     transaction.insert(0, info);
