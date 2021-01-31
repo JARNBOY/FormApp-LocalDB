@@ -1,3 +1,4 @@
+import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
@@ -12,7 +13,6 @@ class TransactionInFoDB {
   //ถูกสร้างไว้แล้ว => เปิด
   TransactionInFoDB(this.dbName);
 
-//dbName = transanction.db
   Future<Database> openDatabase() async {
     //หาตำแหน่งที่จะเก็บข้อมูล
     var appDirectory = await getApplicationDocumentsDirectory();
@@ -23,5 +23,21 @@ class TransactionInFoDB {
     DatabaseFactory dbFactory = await databaseFactoryIo;
     Database db = await dbFactory.openDatabase(dbLocation);
     return db;
+  }
+
+  //บันทึกข้อมูล
+  InsertData(TransactionInFos info) async {
+    //ฐานข้อมูล => store
+    var db = await this.openDatabase();
+    var store = intMapStoreFactory.store("listMember");
+
+    //เก็บข้อมูลแบบ json
+    store.add(db, {
+      "name": info.name,
+      "surname": info.surname,
+      "phone": info.phone,
+      "score": info.score,
+      "date": info.date,
+    });
   }
 }

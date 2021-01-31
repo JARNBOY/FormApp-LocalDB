@@ -90,16 +90,17 @@ class FormScreen extends StatelessWidget {
                     //print(name + " " + surname);
 
                     //เตรียมข้อมูล
-                    TransactionInFos register = TransactionInFos(
+                    TransactionInFos memberInfo = TransactionInFos(
                         name: name,
                         surname: surname,
                         phone: int.parse(phone),
-                        score: int.parse(score));
+                        score: int.parse(score),
+                        date: DateTime.now());
 
                     //เรียก provider
                     var provider = Provider.of<TransactionProvider>(context,
                         listen: false);
-                    provider.addTransaction(register);
+                    provider.addTransaction(memberInfo);
                     Navigator.pop(context);
                   }
                 },

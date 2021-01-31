@@ -76,23 +76,23 @@ class _HomeBodyContainerState extends State<HomeBodyContainer> {
             return ListView.builder(
               itemCount: count,
               itemBuilder: (context, int index) {
-                TransactionInFos transaction = provider.transaction[index];
+                TransactionInFos memberInfo = provider.transaction[index];
 
                 return Card(
                   margin:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                   elevation: 10,
                   child: ListTile(
-                    trailing: Text(transaction.phone.toString()),
+                    trailing: Text(memberInfo.phone.toString()),
                     leading: CircleAvatar(
                       radius: 22,
                       child: FittedBox(
-                        child: Text(transaction.score.toString()),
+                        child: Text(memberInfo.score.toString()),
                       ),
                     ),
-                    title: Text(transaction.name + " " + transaction.surname),
+                    title: Text(memberInfo.name + " " + memberInfo.surname),
                     subtitle:
-                        Text(DateFormat("dd-mm-yyyy").format(DateTime.now())),
+                        Text(DateFormat("dd-mm-yyyy").format(memberInfo.date)),
                   ),
                 );
               },

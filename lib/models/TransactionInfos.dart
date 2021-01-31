@@ -3,6 +3,7 @@ class TransactionInFos {
   String surname;
   int phone;
   int score;
-
-  TransactionInFos({this.name, this.surname, this.phone, this.score});
+  DateTime date; //วันที่ เวลา
+  TransactionInFos(
+      {this.name, this.surname, this.phone, this.score, this.date});
 }

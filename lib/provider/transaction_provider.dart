@@ -12,8 +12,8 @@ class TransactionProvider with ChangeNotifier {
 
   addTransaction(TransactionInFos info) async {
     //สร้างหรือเปิด db
-    var db = await TransactionInFoDB("transanction.db").openDatabase();
-    print(db);
+    var db = await TransactionInFoDB("transanction.db");
+    await db.InsertData(info);
 
     transaction.insert(0, info);
 
