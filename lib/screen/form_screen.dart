@@ -98,7 +98,8 @@ class FormScreen extends StatelessWidget {
                         date: DateTime.now());
 
                     //เรียก provider
-                    var provider = Provider.of<TransactionProvider>(context,
+                    var provider = Provider.of<TransactionMemberProvider>(
+                        context,
                         listen: false);
                     provider.addTransaction(memberInfo);
                     Navigator.pop(context);

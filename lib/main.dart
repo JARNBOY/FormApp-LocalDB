@@ -15,7 +15,7 @@ class Basic_Command_App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) {
-          return TransactionProvider();
+          return TransactionMemberProvider();
         })
       ],
       child: MaterialApp(
@@ -47,6 +47,14 @@ class HomeBodyContainer extends StatefulWidget {
 
 class _HomeBodyContainerState extends State<HomeBodyContainer> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Provider.of<TransactionMemberProvider>(context, listen: false).initData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
@@ -70,7 +78,7 @@ class _HomeBodyContainerState extends State<HomeBodyContainer> {
         ],
       ),
       body: Consumer(
-        builder: (context, TransactionProvider provider, Widget child) {
+        builder: (context, TransactionMemberProvider provider, Widget child) {
           var count = provider.memberTransaction.length;
           if (count > 0) {
             return ListView.builder(
