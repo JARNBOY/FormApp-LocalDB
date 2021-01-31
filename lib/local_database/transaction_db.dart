@@ -26,18 +26,20 @@ class TransactionInFoDB {
   }
 
   //บันทึกข้อมูล
-  InsertData(TransactionInFos info) async {
+  Future<int> InsertData(TransactionInFos info) async {
     //ฐานข้อมูล => store
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("listMember");
 
     //เก็บข้อมูลแบบ json
-    store.add(db, {
+    var keyId = store.add(db, {
       "name": info.name,
       "surname": info.surname,
       "phone": info.phone,
       "score": info.score,
-      "date": info.date,
+      "date": info.date.toIso8601String(),
     });
+    db.close();
+    return keyId;
   }
 }
