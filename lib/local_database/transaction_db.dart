@@ -42,4 +42,14 @@ class TransactionInFoDB {
     db.close();
     return keyId;
   }
+
+  //ดึงข้อมูล
+  Future<bool> loadMemberData() async {
+    var db = await this.openDatabase();
+    var store = intMapStoreFactory.store("listMember");
+
+    var snapshot = await store.find(db);
+    print(snapshot);
+    return true;
+  }
 }

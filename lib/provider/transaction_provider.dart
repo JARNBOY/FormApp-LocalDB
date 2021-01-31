@@ -13,10 +13,13 @@ class TransactionProvider with ChangeNotifier {
   addTransaction(TransactionInFos info) async {
     //สร้างหรือเปิด db
     var db = await TransactionInFoDB("transanction.db");
+    //บันทึกข้อมูล
     await db.InsertData(info);
 
-    transaction.insert(0, info);
+    //ดึงข้อมูลมาแสดง
+    await db.loadMemberData();
 
+    transaction.insert(0, info);
     //แจ้งเตือน Consumer
     notifyListeners();
   }
