@@ -71,12 +71,12 @@ class _HomeBodyContainerState extends State<HomeBodyContainer> {
       ),
       body: Consumer(
         builder: (context, TransactionProvider provider, Widget child) {
-          var count = provider.transaction.length;
+          var count = provider.memberTransaction.length;
           if (count > 0) {
             return ListView.builder(
               itemCount: count,
               itemBuilder: (context, int index) {
-                TransactionInFos memberInfo = provider.transaction[index];
+                TransactionInFos memberInfo = provider.memberTransaction[index];
 
                 return Card(
                   margin:

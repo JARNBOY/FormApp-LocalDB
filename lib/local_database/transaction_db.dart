@@ -44,12 +44,23 @@ class TransactionInFoDB {
   }
 
   //ดึงข้อมูล
-  Future<bool> loadMemberData() async {
+  Future<List<TransactionInFos>> loadMemberData() async {
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("listMember");
 
     var snapshot = await store.find(db);
     print(snapshot);
-    return true;
+    List memberList = List<TransactionInFos>();
+    //ดึงข้อมูลมาทีละแถว
+    for (var record in snapshot) {
+      memberList.add(TransactionInFos(
+          name: record["name"],
+          surname: record["surname"],
+          phone: record["phone"],
+          score: record["score"],
+          date: DateTime.parse(record["date"])));
+    }
+
+    return memberList;
   }
 }

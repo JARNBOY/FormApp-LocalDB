@@ -3,11 +3,11 @@ import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:flutter/foundation.dart';
 
 class TransactionProvider with ChangeNotifier {
-  List<TransactionInFos> transaction = [];
+  List<TransactionInFos> memberTransaction = [];
 
   //ดึวงข้อมูล
   List<TransactionInFos> getTransaction() {
-    return transaction;
+    return memberTransaction;
   }
 
   addTransaction(TransactionInFos info) async {
@@ -17,9 +17,9 @@ class TransactionProvider with ChangeNotifier {
     await db.InsertData(info);
 
     //ดึงข้อมูลมาแสดง
-    await db.loadMemberData();
+    memberTransaction = await db.loadMemberData();
 
-    transaction.insert(0, info);
+    memberTransaction.insert(0, info);
     //แจ้งเตือน Consumer
     notifyListeners();
   }
