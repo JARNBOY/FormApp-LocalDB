@@ -47,8 +47,10 @@ class TransactionInFoDB {
   Future<List<TransactionInFos>> loadMemberData() async {
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("listMember");
+    //false คือเรียงจากใหม่ไปเก่า , มากไปน้อย
 
-    var snapshot = await store.find(db);
+    var snapshot = await store.find(db,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
     print(snapshot);
     List memberList = List<TransactionInFos>();
     //ดึงข้อมูลมาทีละแถว
