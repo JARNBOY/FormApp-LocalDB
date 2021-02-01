@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.exit_to_app),
             color: Colors.black,
             onPressed: () {
-              print("Exite");
+              print("Exite App only androind");
               SystemNavigator.pop();
             },
           )
