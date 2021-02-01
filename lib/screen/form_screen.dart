@@ -1,7 +1,10 @@
 import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:basic_command_app/provider/transaction_provider.dart';
+import 'package:basic_command_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../main.dart';
 
 class FormScreen extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
@@ -102,7 +105,14 @@ class FormScreen extends StatelessWidget {
                         context,
                         listen: false);
                     provider.addTransaction(memberInfo);
-                    Navigator.pop(context);
+                    //Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            fullscreenDialog: true,
+                            builder: (context) {
+                              return MyHomePage();
+                            }));
                   }
                 },
               )

@@ -32,27 +32,43 @@ class Basic_Command_App extends StatelessWidget {
               )
             ],
           ),
-          body: HomeBodyContainer(),
+          body: MyHomePage(),
         ),
       ),
     );
   }
 }
 
-class HomeBodyContainer extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  _HomeBodyContainerState createState() => _HomeBodyContainerState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _HomeBodyContainerState extends State<HomeBodyContainer> {
+class _MyHomePageState extends State<MyHomePage> {
   @override
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Colors.teal,
         body: TabBarView(
           children: [HomeScreen(), FormScreen()],
+        ),
+        bottomNavigationBar: SafeArea(
+          child: TabBar(
+            indicatorColor: Colors.white,
+            tabs: [
+              Tab(
+                icon: Icon(Icons.list),
+                text: "รายชื่อสมาชิก",
+              ),
+              Tab(
+                icon: Icon(Icons.add),
+                text: "เพิ่มข้อมูล",
+              )
+            ],
+          ),
         ),
       ),
     );
