@@ -1,9 +1,10 @@
 import 'package:basic_command_app/models/TransactionInfos.dart';
 import 'package:basic_command_app/provider/transaction_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
+import 'dart:io' show Platform;
 import 'form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,6 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return FormScreen();
               }));
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.black,
+            onPressed: () {
+              print("Exite");
+              SystemNavigator.pop();
             },
           )
         ],
